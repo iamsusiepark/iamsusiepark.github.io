@@ -12,7 +12,9 @@ const examples = {
   'example2':
       'Buda-Pesth seems a wonderful place.',
   'example3':
-      'Scepticism was as much the result of knowledge, as knowledge is of scepticism.'      
+      'Yet do not suppose, because I complain a little or because I can conceive a consolation for my toils which I may never know, that I am wavering in my resolutions.'  
+  'example4':
+      'My father certainly could mean nothing more by his request to me than what you say.'
 };
 
 function status(statusText) {
