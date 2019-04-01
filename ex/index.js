@@ -8,11 +8,13 @@ const HOSTED_URLS = {
 
 const examples = {
   'example1':
-      'Alice was beginning to get very tired of sitting by her sister on the bank.',
+      '"I wish I hadn't cried so much!" said Alice, as she swam about, trying to find her way out. "I shall be punished for it now, I suppose, by being drowned in my own tears! That _will_ be a queer thing, to be sure! However, everything is queer to-day."',
   'example2':
-      'Buda-Pesth seems a wonderful place.',
+      'At last there came a time when the driver went further afield than he had yet gone, and during his absence, the horses began to tremble worse than ever and to snort and scream with fright.I could not see any cause for it, for the howling of the wolves had ceased altogether. But just then the moon, sailing through the black clouds, appeared behind the jagged crest of a beetling, pine-clad rock, and by its light I saw around us a ring of wolves, with white teeth and lolling red tongues, with long, sinewy limbs and shaggy hair.',
   'example3':
-      'Scepticism was as much the result of knowledge, as knowledge is of scepticism.'      
+      'I cannot describe to you my sensations on the near prospect of my undertaking. It is impossible to communicate to you a conception of the trembling sensation, half pleasurable and half fearful, with which I am preparing to depart. I am going to unexplored regions, to "the land of mist and snow," but I shall kill no albatross;', 
+  'example4':
+      '“You appear to me, Mr. Darcy, to allow nothing for the influence of friendship and affection. A regard for the requester would often make one readily yield to a request, without waiting for arguments to reason one into it. I am not particularly speaking of such a case as you have supposed about Mr. Bingley.'
 };
 
 function status(statusText) {
