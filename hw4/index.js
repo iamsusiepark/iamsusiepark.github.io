@@ -32,6 +32,7 @@ function showMetadata(metadataJSON) {
 function settextField(text, predict) {
   const textField = document.getElementById('text-entry');
   textField.value = text;
+  console.log('input text:' + text);
   doPredict(predict);
 }
 
@@ -81,6 +82,7 @@ async function loadHostedPretrainedModel(url) {
     const model = await tf.loadLayersModel(url);
     status('Done loading pretrained model.');
     disableLoadModelButtons();
+    console.log('model:' + model);
     return model;
   } catch (err) {
     console.error(err);
@@ -132,7 +134,7 @@ class Classifier {
       //console.log(word, this.wordIndex[word], inputBuffer);
     }
     const input = inputBuffer.toTensor();
-    //console.log(input);
+    console.log('tensor: ' + input);
 
     status('Running inference');
     const beginMs = performance.now();
