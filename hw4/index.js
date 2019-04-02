@@ -8,13 +8,13 @@ const HOSTED_URLS = {
 
 const examples = {
   'example1':
-      '"I shall be punished for it now, I suppose, by being drowned in my own tears! That _will_ be a queer thing, to be sure! However, everything is queer to-day."',
+      'The White Rabbit put on his spectacles. "Where shall I begin, please your Majesty?" he asked.',
   'example2':
-      'I cannot describe to you my sensations on the near prospect of my undertaking. It is impossible to communicate to you a conception of the trembling sensation, half pleasurable and half fearful, with which I am preparing to depart. I am going to unexplored regions, to "the land of mist and snow," but I shall kill no albatross;', 
+      'Seek happiness in tranquillity and avoid ambition, even if it be only the apparently innocent one of distinguishing yourself in science and discoveries.',
   'example3':
-      '“You appear to me, Mr. Darcy, to allow nothing for the influence of friendship and affection. A regard for the requester would often make one readily yield to a request, without waiting for arguments to reason one into it. I am not particularly speaking of such a case as you have supposed about Mr. Bingley.',
+      'Elizabeth, feeling all the more than common awkwardness and anxiety of his situation, now forced herself to speak; and immediately, though not very fluently, gave him to understand that her sentiments had undergone so material a change, since the period to which he alluded, as to make her receive with gratitude and pleasure his present assurances. ',
   'example4':
-      'At last there came a time when the driver went further afield than he had yet gone, and during his absence, the horses began to tremble worse than ever and to snort and scream with fright.I could not see any cause for it, for the howling of the wolves had ceased altogether. But just then the moon, sailing through the black clouds, appeared behind the jagged crest of a beetling, pine-clad rock, and by its light I saw around us a ring of wolves, with white teeth and lolling red tongues, with long, sinewy limbs and shaggy hair.'
+      'Dr. Van Helsing is laconic; he tells the farmers that he is hurrying to Bistritz, and pays them well to make the exchange of horses. We get hot soup, or coffee, or tea; and off we go.'
 };
 
 function status(statusText) {
