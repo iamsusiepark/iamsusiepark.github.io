@@ -119,7 +119,8 @@ class Classifier {
     showMetadata(metadata);
     this.maxLen = metadata['max_len'];
     console.log('maxLen = ' + this.maxLen);
-    this.wordIndex = metadata['word_index']
+    this.wordIndex = metadata['word_index'];
+    this.vocab_size = metadata['vocabulary_size'];
   }
 
   predict(text) {
@@ -130,6 +131,7 @@ class Classifier {
     const inputBuffer = tf.buffer([1, this.maxLen], 'float32');
     for (let i = 0; i < inputText.length; ++i) {
       const word = inputText[i];
+      #wordIndex
       inputBuffer.set(this.wordIndex[word], 0, i);
       //console.log(word, this.wordIndex[word], inputBuffer);
     }
