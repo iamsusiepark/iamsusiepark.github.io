@@ -5,13 +5,14 @@ const HOSTED_URLS = {
   metadata:
       'model_js/metadata.json'
 };
+
 const examples = {
   'example1':
-      'The White Rabbit put on his spectacles. "Where shall I begin, please your Majesty?" he asked.',
+      'Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it.',
   'example2':
       'Seek happiness in tranquillity and avoid ambition, even if it be only the apparently innocent one of distinguishing yourself in science and discoveries.',
   'example3':
-      'Elizabeth, feeling all the more than common awkwardness and anxiety of his situation, now forced herself to speak; and immediately, though not very fluently, gave him to understand that her sentiments had undergone so material a change, since the period to which he alluded, as to make her receive with gratitude and pleasure his present assurances. ',
+      'Elizabeth said no more--but her mind could not acquiesce. The possibility of meeting Mr. Darcy, while viewing the place, instantly occurred.',
   'example4':
       'Dr. Van Helsing is laconic; he tells the farmers that he is hurrying to Bistritz, and pays them well to make the exchange of horses. We get hot soup, or coffee, or tea; and off we go.'
 };
@@ -31,6 +32,7 @@ function showMetadata(metadataJSON) {
 function settextField(text, predict) {
   const textField = document.getElementById('text-entry');
   textField.value = text;
+  console.log('input text:' + text);
   doPredict(predict);
 }
 
@@ -80,6 +82,7 @@ async function loadHostedPretrainedModel(url) {
     const model = await tf.loadLayersModel(url);
     status('Done loading pretrained model.');
     disableLoadModelButtons();
+    console.log('model:' + model);
     return model;
   } catch (err) {
     console.error(err);
@@ -116,7 +119,8 @@ class Classifier {
     showMetadata(metadata);
     this.maxLen = metadata['max_len'];
     console.log('maxLen = ' + this.maxLen);
-    this.wordIndex = metadata['word_index']
+    this.wordIndex = metadata['word_index'];
+    this.vocab_size = metadata['vocabulary_size'];
   }
 
   predict(text) {
@@ -131,7 +135,7 @@ class Classifier {
       //console.log(word, this.wordIndex[word], inputBuffer);
     }
     const input = inputBuffer.toTensor();
-    console.log('input' + input);
+    console.log('tensor: ' + input);
 
     status('Running inference');
     const beginMs = performance.now();
