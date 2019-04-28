@@ -58,7 +58,7 @@ function doPredict(predict) {
   const green = result.score[1]
   const blue = result.score[2]
   var displayColor = function() {
-        var result = parseInput(txt.value);
+        var result = parseInput(textField.value);
         if(result) {
             msg.style.display = "none";
             view.innerHTML =
@@ -154,7 +154,8 @@ class Classifier {
       //console.log(word, this.wordIndex[word], inputBuffer);
     }
     const input = inputBuffer.toTensor();
-    console.log("input tensor: " +input);
+    input = tf.where(tf.is_nan(input), tf.zeros_like(input), input)
+    console.log("input tensor: " +input + ", input shape:" + input.shape);
     status('Running inference');
     const beginMs = performance.now();
     const predictOut = this.model.predict(input);
