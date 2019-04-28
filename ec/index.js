@@ -96,16 +96,16 @@ async function urlExists(url) {
 
 async function loadHostedPretrainedModel(url) {
   status('Loading pretrained model from ' + url);
-  try {
-    const model = await tf.loadLayersModel(url);
-    console.log(model.summary());
-    status('Done loading pretrained model.');
-    disableLoadModelButtons();
-    return model;
-  } catch (err) {
-    console.log(err);
-    status('Loading pretrained model failed.');
-  }
+//   try {
+  const model = await tf.loadLayersModel(url);
+  console.log(model.summary());
+  status('Done loading pretrained model.');
+  disableLoadModelButtons();
+  return model;
+//   } catch (err) {
+//     console.log(err);
+//     status('Loading pretrained model failed.');
+//   }
 }
 
 
