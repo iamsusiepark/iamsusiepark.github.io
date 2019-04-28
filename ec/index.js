@@ -51,6 +51,10 @@ function doPredict(predict) {
     score_string += x + " ->  " + result.score[x].toFixed(3) + ", "
   }
   console.log(score_string);
+  const red = parseInt(result.score[0] * 255);
+  const green = parseInt(result.score[1] * 255);
+  const blue = parseInt(result.score[2] * 255);
+  console.log("rgb: " + red+", " + green+", " + blue );
   const red = result.score[0]
   const green = result.score[1]
   const blue = result.score[2]
