@@ -1,6 +1,3 @@
-
-
-
 const HOSTED_URLS = {
   model:
       'model_js/model.json',
@@ -143,7 +140,7 @@ class Classifier {
 
   predict(text) {
     // Convert to lower case and remove all punctuations.
-    const inputText = list(text.trim().toLowerCase().replace(/(\.|\,|\!)/g, ''));
+    const inputText = text.trim().toLowerCase().replace(/(\.|\,|\!)/g, '').split("");
     // Look up word indices.
     console.log(inputText);
     const inputBuffer = tf.buffer([1, this.maxLen], 'float32');
