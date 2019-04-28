@@ -143,8 +143,7 @@ class Classifier {
 
   predict(text) {
     // Convert to lower case and remove all punctuations.
-    const inputText =
-        text.trim().toLowerCase().replace(/(\.|\,|\!)/g, '').split(' ');
+    const inputText = list(text.trim().toLowerCase().replace(/(\.|\,|\!)/g, ''));
     // Look up word indices.
     console.log(inputText);
     const inputBuffer = tf.buffer([1, this.maxLen], 'float32');
@@ -155,7 +154,7 @@ class Classifier {
     }
     console.log("inputBuffer: " + inputBuffer);
     const input = inputBuffer.toTensor();
-    input = tf.where(tf.math.is_nan(input), tf.zeros_like(input), input);
+   // input = tf.where(tf.math.is_nan(input), tf.zeros_like(input), input);
     console.log("input tensor: " +input + ", input shape:" + input.shape);
     status('Running inference');
     const beginMs = performance.now();
