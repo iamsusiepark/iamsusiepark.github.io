@@ -160,7 +160,7 @@ class Classifier {
     const input = inputBuffer.toTensor();
     status('Running inference');
     const beginMs = performance.now();
-    const predictOut = this.model.predict(inputText);
+    const predictOut = this.model.predict(input);
     //console.log(predictOut.dataSync());
     const score = predictOut.dataSync();//[0];
     predictOut.dispose();
