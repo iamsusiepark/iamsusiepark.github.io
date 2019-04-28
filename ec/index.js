@@ -1,13 +1,22 @@
 
 const HOSTED_URLS = {
   model:
-      'model_js/model.json'
+      'model_js/model.json',
+  metadata:
+      'model_js/metadata.json'
 };
 
 
 function status(statusText) {
   console.log(statusText);
   document.getElementById('status').textContent = statusText;
+}
+
+function showMetadata(metadataJSON) {
+  document.getElementById('vocabularySize').textContent =
+      metadataJSON['vocabulary_size'];
+  document.getElementById('maxLen').textContent =
+      metadataJSON['max_len'];
 }
 
 
@@ -104,13 +113,37 @@ async function loadHostedPretrainedModel(url) {
 }
 
 
+async function loadHostedMetadata(url) {
+  status('Loading metadata from ' + url);
+  try {
+    const metadataJson = await fetch(url);
+    const metadata = await metadataJson.json();
+    status('Done loading metadata.');
+    return metadata;
+  } catch (err) {
+    console.error(err);
+    status('Loading metadata failed.');
+  }
+}
+
 class Classifier {
 
   async init(urls) {
     this.urls = urls;
     this.model = await loadHostedPretrainedModel(urls.model);
+    await this.loadMetadata();
     return this;
   }
+  
+  async loadMetadata() {
+    const metadata =
+        await loadHostedMetadata(this.urls.metadata);
+    showMetadata(metadata);
+    this.maxLen = metadata['max_len'];
+    console.log('maxLen = ' + this.maxLen);
+    this.wordIndex = metadata['word_index']
+  }
+
 
   predict(text) {
     // Convert to lower case and remove all punctuations.
@@ -118,7 +151,13 @@ class Classifier {
         text.trim().toLowerCase().replace(/(\.|\,|\!)/g, '').split(' ');
     // Look up word indices.
     console.log(inputText);
-
+    const inputBuffer = tf.buffer([1, this.maxLen], 'float32');
+    for (let i = 0; i < inputText.length; ++i) {
+      const word = inputText[i];
+      inputBuffer.set(this.wordIndex[word], 0, i);
+      //console.log(word, this.wordIndex[word], inputBuffer);
+    }
+    const input = inputBuffer.toTensor();
     status('Running inference');
     const beginMs = performance.now();
     const predictOut = this.model.predict(inputText);
