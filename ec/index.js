@@ -153,8 +153,9 @@ class Classifier {
       inputBuffer.set(this.wordIndex[word], 0, i);
       //console.log(word, this.wordIndex[word], inputBuffer);
     }
+    console.log("inputBuffer: " + inputBuffer);
     const input = inputBuffer.toTensor();
-    input = tf.where(tf.is_nan(input), tf.zeros_like(input), input)
+    input = tf.where(tf.math.is_nan(input), tf.zeros_like(input), input);
     console.log("input tensor: " +input + ", input shape:" + input.shape);
     status('Running inference');
     const beginMs = performance.now();
