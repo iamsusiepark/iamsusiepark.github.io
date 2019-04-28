@@ -55,9 +55,6 @@ function doPredict(predict) {
   const green = parseInt(result.score[1] * 255);
   const blue = parseInt(result.score[2] * 255);
   console.log("rgb: " + red+", " + green+", " + blue );
-  const red = result.score[0]
-  const green = result.score[1]
-  const blue = result.score[2]
   var displayColor = function() {
       msg.style.display = "none";
       view.innerHTML =
