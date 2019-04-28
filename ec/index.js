@@ -76,11 +76,7 @@ function doPredict(predict) {
 
 function prepUI(predict) {
   setPredictFunction(predict);
-  const testExampleSelect = 'tensorflow orange'
-  testExampleSelect.addEventListener('change', () => {
-    settextField(examples[testExampleSelect], predict);
-  });
-  settextField(examples['example1'], predict);
+  settextField('tensorflow orange', predict);
 }
 
 
