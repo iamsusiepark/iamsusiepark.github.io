@@ -13,11 +13,6 @@ function status(statusText) {
   document.getElementById('status').textContent = statusText;
 }
 
-function showMetadata(metadataJSON) {
-  document.getElementById('vocabularySize').textContent = metadataJSON['vocabulary_size'];
-  document.getElementById('maxLen').textContent = metadataJSON['max_len'];
-}
-
 
 function settextField(text, predict) {
   const textField = document.getElementById('text-entry');
@@ -138,7 +133,6 @@ class Classifier {
   async loadMetadata() {
     const metadata =
         await loadHostedMetadata(this.urls.metadata);
-    showMetadata(metadata);
     this.maxLen = metadata['max_len'];
     console.log('maxLen = ' + this.maxLen);
     this.wordIndex = metadata['word_index']
