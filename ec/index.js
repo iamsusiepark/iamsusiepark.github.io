@@ -55,21 +55,15 @@ function doPredict(predict) {
   const green = result.score[1]
   const blue = result.score[2]
   var displayColor = function() {
-        var result = parseInput(textField.value);
-        if(result) {
-            msg.style.display = "none";
-            view.innerHTML =
-                '<div class="' + getTextColor(red, green, blue) + '">' +
-                    '<div class="inner">' +
-                        '<span>' + 'RGB(' + red + ', ' + green + ', ' + blue + ')' + '</span>' +
-                    '</div>' +
-                '</div>' + view.innerHTML;
-            view.firstChild.style.backgroundColor = 'RGB(' + red + ', ' + green + ', ' + blue + ')';
-            txt.value = "";
-
-        } else {
-            msg.style.display = "block";
-        }
+      msg.style.display = "none";
+      view.innerHTML =
+          '<div class="' + getTextColor(red, green, blue) + '">' +
+              '<div class="inner">' +
+                  '<span>' + 'RGB(' + red + ', ' + green + ', ' + blue + ')' + '</span>' +
+              '</div>' +
+          '</div>' + view.innerHTML;
+      view.firstChild.style.backgroundColor = 'RGB(' + red + ', ' + green + ', ' + blue + ')';
+      textField.value = "";
     };
   btn.onclick = displayColor;
   status(
