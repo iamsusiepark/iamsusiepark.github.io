@@ -1,4 +1,5 @@
 
+
 const HOSTED_URLS = {
   model:
       'model_js/model.json',
@@ -13,10 +14,8 @@ function status(statusText) {
 }
 
 function showMetadata(metadataJSON) {
-  document.getElementById('vocabularySize').textContent =
-      metadataJSON['vocabulary_size'];
-  document.getElementById('maxLen').textContent =
-      metadataJSON['max_len'];
+  document.getElementById('vocabularySize').textContent = metadataJSON['vocabulary_size'];
+  document.getElementById('maxLen').textContent = metadataJSON['max_len'];
 }
 
 
@@ -103,11 +102,12 @@ async function loadHostedPretrainedModel(url) {
   status('Loading pretrained model from ' + url);
   try {
     const model = await tf.loadLayersModel(url);
+    console.log(model.summary());
     status('Done loading pretrained model.');
     disableLoadModelButtons();
     return model;
   } catch (err) {
-    console.error(err);
+    console.log(err);
     status('Loading pretrained model failed.');
   }
 }
@@ -134,7 +134,7 @@ class Classifier {
     await this.loadMetadata();
     return this;
   }
-  
+
   async loadMetadata() {
     const metadata =
         await loadHostedMetadata(this.urls.metadata);
@@ -163,6 +163,7 @@ class Classifier {
     const predictOut = this.model.predict(input);
     //console.log(predictOut.dataSync());
     const score = predictOut.dataSync();//[0];
+    console.log(score);
     predictOut.dispose();
     const endMs = performance.now();
 
@@ -185,4 +186,3 @@ async function setup() {
 }
 
 setup();
-
