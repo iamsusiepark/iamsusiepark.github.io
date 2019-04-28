@@ -46,6 +46,7 @@ function doPredict(predict) {
   var btn = document.getElementById("btn");
   var view = document.getElementById("view");
   var msg = document.getElementById("message");
+  console.log(textField.value);
   const result = predict(textField.value);
   score_string = "Class scores: ";
   for (var x in result.score) {
@@ -152,6 +153,7 @@ class Classifier {
       //console.log(word, this.wordIndex[word], inputBuffer);
     }
     const input = inputBuffer.toTensor();
+    console.log("input tensor: " +input);
     status('Running inference');
     const beginMs = performance.now();
     const predictOut = this.model.predict(input);
